@@ -18,15 +18,38 @@
   margin: auto; }
 
 header {
-  z-index: 1; }
-  header .ulHeader li {
-    padding: 0 15px; }
-    header .ulHeader li a {
+  z-index: 1;
+  box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.0509804); }
+  header .contentHeader ul li {
+    margin-left: 15px;
+    text-align: center; }
+    header .contentHeader ul li a {
+      padding-right: .5rem;
+      padding-left: .5rem;
+      color: #333;
       font-size: 20px;
-      color: black; }
-  header .img img {
-    height: 80px;
-    width: 150px; }
+      font-weight: 500;
+      width: 100%;
+      position: relative;
+      overflow: hidden; }
+      header .contentHeader ul li a:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        background: brown;
+        transform: translateX(-160px);
+        width: 100%;
+        height: 100%;
+        opacity: 0; }
+    header .contentHeader ul li a:hover a:after {
+      animation: animationaAfter 1s forwards; }
+  header .img {
+    width: 150px;
+    height: 70px; }
+    header .img img {
+      width: 100%;
+      height: 100%; }
   header .menuCollapse {
     display: none; }
     header .menuCollapse .menu {
@@ -47,7 +70,16 @@ header {
         background: black;
         display: block; }
 
+@keyframes animationaAfter {
+  0% {
+    opacity: 1;
+    transform: translateX(-100px); }
+  100% {
+    opacity: 1;
+    transform: translateX(100px); } }
+
 .slider {
+  z-index: 0;
   background: url("../img/slide.jpg");
   background-position: center;
   background-size: cover;
@@ -112,8 +144,25 @@ header {
   display: flex; }
   .content .left {
     margin-right: 60px; }
-    .content .left .img img {
-      width: 100%; }
+    .content .left .img {
+      position: relative; }
+      .content .left .img img {
+        width: 100%; }
+      .content .left .img button {
+        display: inline-block;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        padding: 6px 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #f8f8f8;
+        font-size: 14px;
+        line-height: 1.5;
+        pointer-events: none;
+        border-radius: 5px;
+        background-color: #1ce489;
+        z-index: 0; }
     .content .left .text .span span:last-child {
       margin-left: 25px; }
     .content .left .text h4 {
@@ -162,26 +211,41 @@ header {
       font-weight: 600; }
     .content .left .replay form input {
       height: 30px;
-      width: 99.5%;
-      margin-top: 20px; }
-    .content .left .replay form .input {
-      width: 47%; }
-    .content .left .replay form textarea {
+      width: 96%;
       margin-top: 20px;
-      width: 100%; }
+      padding-left: 20px; }
+    .content .left .replay form .input {
+      width: 44%; }
+    .content .left .replay form textarea {
+      padding-left: 20px;
+      margin-top: 20px;
+      width: 96.5%; }
     .content .left .replay form button {
       padding: 10px;
       font-size: 20px;
       background: none;
       border: 1px solid black;
-      margin: 30px 0; }
+      margin: 30px 0;
+      position: relative; }
+      .content .left .replay form button:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #1ce489;
+        opacity: 0; }
+    .content .left .replay form button:hover button:after {
+      opacity: 1; }
   .content .right .search {
     background: #f8f8f8;
     padding: 30px 0;
     text-align: center; }
     .content .right .search input {
       height: 45px;
-      width: 60%; }
+      width: 60%;
+      padding-left: 20px; }
     .content .right .search button {
       width: 45px;
       height: 50px;
@@ -270,7 +334,6 @@ footer .footer-bottom {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 80px;
   z-index: 1;
   background: white;
   transition: all 0.5s; }
@@ -283,9 +346,14 @@ footer .footer-bottom {
   .noCollapse {
     display: none; }
   header .menuCollapse {
-    display: block; } }
+    display: block; }
+  .content .left .replay form .reInput {
+    width: 96%;
+    margin-right: 0; } }
 
 @media screen and (max-width: 800px) {
+  .col-8 {
+    width: 90%; }
   .left {
     width: 100%;
     display: block; }
